@@ -24,8 +24,8 @@ const SPACING = 5;
 //set up canvas
 let canvas = new Canvas(size, "sliding-tiles-canvas", document.getElementById("canvas-container")!);
 
-//12 fps
-//we can't do `setInterval(canvas.update(), ...);`,
+//15 fps
+//we can't do `setInterval(canvas.update, ...);`,
 //cause that fucks with the `this` in `canvas.update` -prussia
 setInterval(function() {
   canvas.update();
@@ -285,7 +285,7 @@ document.addEventListener("keydown", (e: KeyboardEvent) => {
     win_popup.children.push(new TextLine(canvas, "You Won!", color_table.text_primary, "1.5em Verdana", [win_popup.top_left[0]+win_popup.width/2, win_popup.top_left[1]+65], true));
     win_popup.children.push(new TextLine(canvas, `In ${history.length} moves.`, color_table.text_primary, "1em Verdana", [win_popup.top_left[0]+win_popup.width/2, win_popup.top_left[1]+85], true));
     //play again button
-    win_popup.children.push(new TextButton(canvas, "Play Again", color_table.text_color, color_table.text_hover, "1.2em Verdana", [win_popup.top_left[0]+win_popup.width/2, win_popup.top_left[1]+115], () => {
+    win_popup.children.push(new TextButton(canvas, "Play Again", color_table.text_primary, color_table.text_hover, "1.2em Verdana", [win_popup.top_left[0]+win_popup.width/2, win_popup.top_left[1]+115], () => {
       canvas.reset();
       [canvas_grid, tile_size, steps] = gen_grid(SIDE_LENGTH, 18, get_generate_moves());
       //doesn't include current grid state

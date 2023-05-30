@@ -119,8 +119,8 @@ export class Tile implements Component, Clickable {
   static within_bounds(tile: Tile, e: MouseEvent) {
     let x1: number = tile.top_left[0]+tile.location[0]*(tile.size+tile.spacing);
     let y1: number = tile.top_left[1]+tile.location[1]*(tile.size+tile.spacing);
-    let x2 = x1+tile.size;
-    let y2 = y1+tile.size;
+    let x2: number = x1+tile.size;
+    let y2: number = y1+tile.size;
     //check to make sure click is within tile
     if (e.offsetX < x1 || e.offsetX > x2 || e.offsetY < y1 || e.offsetY > y2) {
       return false;
@@ -130,10 +130,6 @@ export class Tile implements Component, Clickable {
   }
   click(e: MouseEvent) {
     if (this.click_disabled) return;
-    let x1: number = this.top_left[0]+this.location[0]*(this.size+this.spacing);
-    let y1: number = this.top_left[1]+this.location[1]*(this.size+this.spacing);
-    let x2 = x1+this.size;
-    let y2 = y1+this.size;
     //check to make sure click is within tile
     if (!Tile.within_bounds(this, e)) {
       this.selected = false;

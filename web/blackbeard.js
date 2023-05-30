@@ -32,8 +32,10 @@ export class Canvas {
     update() {
         this.frame += 1;
         this.clear();
-        for (let i = 0; i < this.components.length; i++) {
-            this.components[i].update();
+        //copy array beforehand so removals during the loop don't cause problems
+        let components_copy = this.components.slice();
+        for (let i = 0; i < components_copy.length; i++) {
+            components_copy[i].update();
         }
     }
     reset() {

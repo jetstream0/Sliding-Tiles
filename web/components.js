@@ -120,10 +120,6 @@ export class Tile {
     click(e) {
         if (this.click_disabled)
             return;
-        let x1 = this.top_left[0] + this.location[0] * (this.size + this.spacing);
-        let y1 = this.top_left[1] + this.location[1] * (this.size + this.spacing);
-        let x2 = x1 + this.size;
-        let y2 = y1 + this.size;
         //check to make sure click is within tile
         if (!Tile.within_bounds(this, e)) {
             this.selected = false;
