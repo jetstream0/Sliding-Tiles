@@ -3,6 +3,7 @@ export type CanvasEventHandler = (event: Event) => void;
 
 export interface Component {
   update(): void;
+  type: string;
 }
 
 export class Canvas {

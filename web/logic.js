@@ -70,3 +70,8 @@ export function move_tile(grid_colors, side_length, location, direction) {
 export function solved(current, solution) {
     return current.every((current_item, index) => current_item === solution[index]);
 }
+//get # of moves that computer should do to generate the puzzle
+export function get_generate_moves() {
+    //should be inclusive range of 24-35
+    return 24 + Math.floor(Math.random() * 12);
+}

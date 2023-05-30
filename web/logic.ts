@@ -78,3 +78,9 @@ export function move_tile(grid_colors: Color[], side_length: number, location: n
 export function solved(current: Color[], solution: Color[]): boolean {
   return current.every((current_item: Color, index: number) => current_item === solution[index]);
 }
+
+//get # of moves that computer should do to generate the puzzle
+export function get_generate_moves(): number {
+  //should be inclusive range of 24-35
+  return 24+Math.floor(Math.random()*12);
+}
