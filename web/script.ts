@@ -218,28 +218,7 @@ function add_top() {
 
 add_top();
 
-document.addEventListener("keydown", (e: KeyboardEvent) => {
-  let direction: Direction;
-  switch (e.key.toLowerCase()) {
-    case "arrowup":
-    case "w":
-      direction = Direction.Up;
-      break;
-    case "arrowdown":
-    case "s":
-      direction = Direction.Down;
-      break;
-    case "arrowleft":
-    case "a":
-      direction = Direction.Left;
-      break;
-    case "arrowright":
-    case "d":
-      direction = Direction.Right;
-      break;
-    default:
-      return;
-  }
+function player_move(direction: Direction) {
   //get selected location
   let selected_location: number[];
   for (let i=0; i < canvas_grid.length; i++) {
@@ -293,4 +272,68 @@ document.addEventListener("keydown", (e: KeyboardEvent) => {
       add_top();
     }, true));
   }
+}
+
+document.addEventListener("keydown", (e: KeyboardEvent) => {
+  let direction: Direction;
+  switch (e.key.toLowerCase()) {
+    case "arrowup":
+    case "w":
+      direction = Direction.Up;
+      break;
+    case "arrowdown":
+    case "s":
+      direction = Direction.Down;
+      break;
+    case "arrowleft":
+    case "a":
+      direction = Direction.Left;
+      break;
+    case "arrowright":
+    case "d":
+      direction = Direction.Right;
+      break;
+    default:
+      return;
+  }
+  player_move(direction);
+});
+
+let start_coords: number[];
+
+document.addEventListener("touchstart", (e: TouchEvent) => {
+  start_coords = [e.changedTouches[0].clientX, e.changedTouches[0].clientY];
+});
+
+document.addEventListener("touchend", (e: TouchEvent) => {
+  //shouldn't happen
+  if (!start_coords) return;
+  let delta_x: number = e.changedTouches[0].clientX-start_coords[0];
+  let delta_y: number = e.changedTouches[0].clientY-start_coords[0];
+  console.log("delta", delta_x, delta_y)
+  //ignore if movement is very little, or swipe not clearly in a direction
+  let diff: number = Math.abs(Math.abs(delta_x)-Math.abs(delta_y));
+  console.log("diff", diff)
+  if (diff < 20 || (Math.abs(delta_x) < 20 && Math.abs(delta_y) < 20)) return;
+  //get direction
+  let direction: Direction;
+  //see if swipe is vertical or horizontal, then negative or positive
+  if (Math.abs(delta_x) > Math.abs(delta_y)) {
+    //horizontal
+    if (delta_x > 0) {
+      direction = Direction.Right;
+    } else {
+      direction = Direction.Left;
+    }
+  } else {
+    //vertical
+    if (delta_y > 0) {
+      direction = Direction.Down;
+    } else {
+      direction = Direction.Up;
+    }
+  }
+  console.log("direction", direction)
+  start_coords = undefined;
+  player_move(direction);
 });
