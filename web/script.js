@@ -1,6 +1,6 @@
-import { Canvas } from './blackbeard';
-import { Tile, SlidingTile, TextButton, TextLine, Counter, Popup, Paragraph, Gif, Color, Direction, color_table } from './components';
-import { grid_to_grid_colors, move_tile, solved, get_generate_moves } from './logic';
+import { Canvas } from './blackbeard.js';
+import { Tile, SlidingTile, TextButton, TextLine, Counter, Popup, Paragraph, Gif, Color, Direction, color_table } from './components.js';
+import { grid_to_grid_colors, move_tile, solved, get_generate_moves } from './logic.js';
 let page_height = window.innerHeight;
 let page_width = window.innerWidth;
 let size;

@@ -1,4 +1,4 @@
-import { Color, Direction } from './components';
+import { Color, Direction } from './components.js';
 //change grid to array of colors
 export function grid_to_grid_colors(grid) {
     let grid_colors = [];

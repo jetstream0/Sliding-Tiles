@@ -1,6 +1,6 @@
-import { Canvas } from './blackbeard';
-import { Tile, SlidingTile, TextButton, TextLine, Counter, Popup, Paragraph, Gif, Color, Direction, ChangeColorCustomEvent, color_table } from './components';
-import { ChangeReturn, Grid, grid_to_grid_colors, move_tile, solved, get_generate_moves } from './logic';
+import { Canvas } from './blackbeard.js';
+import { Tile, SlidingTile, TextButton, TextLine, Counter, Popup, Paragraph, Gif, Color, Direction, ChangeColorCustomEvent, color_table } from './components.js';
+import { ChangeReturn, Grid, grid_to_grid_colors, move_tile, solved, get_generate_moves } from './logic.js';
 
 type GenGridItem = {
   color: Color,

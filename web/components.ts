@@ -1,4 +1,4 @@
-import { Canvas, Component } from './blackbeard';
+import { Canvas, Component } from './blackbeard.js';
 
 export enum Color {
   Movable,

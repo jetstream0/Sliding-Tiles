@@ -1,4 +1,4 @@
-import { Tile, Color, Direction } from './components';
+import { Tile, Color, Direction } from './components.js';
 
 export type ChangeTile = {
   new_color: Color,
